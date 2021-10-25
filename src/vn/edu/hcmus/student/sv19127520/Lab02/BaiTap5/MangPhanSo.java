@@ -29,13 +29,26 @@ public class MangPhanSo {
         this.size=arr.length;
     }
 
+    /**
+     * Get method
+     * @return PhanSo[]
+     */
     public PhanSo[] get(){
         return this.arr;
     }
+
+    /**
+     * set method
+     * @param a MangPhanSo
+     */
     public void set(MangPhanSo a){
         this.arr=a.arr;
         this.size=a.size;
     }
+
+    /**
+     * Input method
+     */
     public void Input(){
         Scanner scan=new Scanner(System.in);
         System.out.println("Enter size: ");
@@ -54,6 +67,10 @@ public class MangPhanSo {
         this.arr=s;
         this.size=n;
     }
+
+    /**
+     * Display method
+     */
     public void Print(){
         for (PhanSo i:this.arr){
             i.Print();
@@ -62,6 +79,10 @@ public class MangPhanSo {
         System.out.println();
     }
 
+    /**
+     * Sum of MangPhanSo
+     * @return PhanSo
+     */
     public PhanSo Sum(){
         PhanSo sum=new PhanSo();
         for (PhanSo i:this.arr){
@@ -69,6 +90,11 @@ public class MangPhanSo {
         }
         return sum;
     }
+
+    /**
+     * Product of MangPhanSo
+     * @return product
+     */
     public PhanSo Product(){
         if (this.size==0)
             return new PhanSo(0,1);
@@ -78,6 +104,11 @@ public class MangPhanSo {
         }
         return pro;
     }
+
+    /**
+     * Find maximum value
+     * @return maximum value
+     */
     public PhanSo Max(){
         if(this.size==0)
             return new PhanSo();
@@ -92,6 +123,11 @@ public class MangPhanSo {
         }
         return t;
     }
+
+    /**
+     * Find position of maximum value
+     * @return Set<Integer></Integer>
+     */
     public Set<Integer> findMaxPos(){
         PhanSo t=Max();
         Set<Integer> k =new HashSet<Integer>();
@@ -103,11 +139,19 @@ public class MangPhanSo {
         }
         return k;
     }
+
+    /**
+     * Compact PhanSo
+     */
     public void compact(){
         for (PhanSo i:arr){
             i=i.compact();
         }
     }
+
+    /**
+     * Sort ascending
+     */
     public void sortAscend(){
         for (int i=0;i<this.size-1;i++){
             for (int j=i+1;j<this.size;j++){
@@ -119,6 +163,10 @@ public class MangPhanSo {
             }
         }
     }
+
+    /**
+     * Sort descending
+     */
     public void sortDescend(){
         for (int i=0;i<this.size-1;i++){
             for (int j=i+1;j<this.size;j++){
@@ -130,16 +178,34 @@ public class MangPhanSo {
             }
         }
     }
+
+    /**
+     * Update value in position k
+     * @param k position
+     * @param a value
+     */
     public void Update(int k, PhanSo a){
         if(k<0 ||k >this.size)
             return;
         this.arr[k]=a;
     }
+
+    /**
+     * Update value a in position k
+     * @param k position
+     * @param a value
+     */
     public void Update(int k, String a){
         if(k<0 ||k >this.size)
             return;
         this.arr[k]=PhanSo.parsePhanSo(a);
     }
+
+    /**
+     * Insert method
+     * @param k position
+     * @param a value
+     */
     public void Insert(int k, PhanSo a){
         if(k<0 ||k >this.size)
             return;
@@ -154,6 +220,11 @@ public class MangPhanSo {
         this.arr=t;
         this.size++;
     }
+
+    /**
+     * Delete method
+     * @param k position
+     */
     public void delete(int k){
         if(k<0 ||k >this.size)
             return;
@@ -167,6 +238,12 @@ public class MangPhanSo {
         this.arr=t;
         this.size--;
     }
+
+    /**
+     * Parse from String to MangPhanSo
+     * @param a string
+     * @return MangPhanSo
+     */
     public static MangPhanSo parseMangPhanSo(String a){
         String[] y=a.split(" ");
         MangPhanSo t=new MangPhanSo();
